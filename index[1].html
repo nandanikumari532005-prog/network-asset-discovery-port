@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Asset Discovery & Port Audit</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <h1>Network Asset Discovery & Port Audit Tool</h1>
+    <p>Discover network assets and audit TCP ports</p>
+</header>
+
+<main class="container">
+    <section class="card">
+        <h2>🔍 Network Asset Discovery</h2>
+        <label for="host">IP Address / Hostname</label>
+        <input type="text" id="host" placeholder="Example: 127.0.0.1">
+        <button onclick="discoverAsset()">Discover Asset</button>
+        <p id="discoverMessage"></p>
+    </section>
+
+    <section class="card" id="assetCard">
+        <h2>Asset Information</h2>
+        <div class="info-grid">
+            <div class="info-box"><span>IP Address</span><strong id="assetIP">-</strong></div>
+            <div class="info-box"><span>Hostname</span><strong id="assetHostname">-</strong></div>
+            <div class="info-box"><span>System</span><strong id="assetSystem">-</strong></div>
+            <div class="info-box"><span>Status</span><strong id="assetStatus">-</strong></div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>🔐 Port Audit</h2>
+        <label for="scanHost">Target Host</label>
+        <input type="text" id="scanHost" placeholder="Example: 127.0.0.1">
+
+        <div class="port-row">
+            <div>
+                <label for="startPort">Start Port</label>
+                <input type="number" id="startPort" value="1" min="1" max="65535">
+            </div>
+            <div>
+                <label for="endPort">End Port</label>
+                <input type="number" id="endPort" value="100" min="1" max="65535">
+            </div>
+        </div>
+
+        <button onclick="scanPorts()">Scan Ports</button>
+        <p id="scanMessage"></p>
+    </section>
+
+    <section class="card" id="resultCard">
+        <h2>Port Audit Results</h2>
+        <div class="summary">
+            <div><span>Host</span><strong id="resultHost">-</strong></div>
+            <div><span>IP</span><strong id="resultIP">-</strong></div>
+            <div><span>Open Ports</span><strong id="openCount">0</strong></div>
+        </div>
+
+        <table>
+            <thead>
+                <tr><th>Port</th><th>Status</th></tr>
+            </thead>
+            <tbody id="resultTable"></tbody>
+        </table>
+    </section>
+</main>
+
+<footer>Network Asset Discovery & Port Audit Tool</footer>
+<script src="/script.js"></script>
+</body>
+</html>
